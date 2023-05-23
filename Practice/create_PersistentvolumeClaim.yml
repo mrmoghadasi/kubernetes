@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nginx-log-dev
+  namespace: dev
+  labels:
+    app: web
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+     storage: 1Gi

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: web
+  namespace: dev
+#  annotations:
+#    monitoring: "true"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+       app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - image: nginx
+        name: nginx1
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - name: nginx-log-dev2
+            mountPath: /var/log/nginx
+      volumes:
+         - name: nginx-log-dev2
+           persistentVolumeClaim:
+             claimName: nginx-log-dev

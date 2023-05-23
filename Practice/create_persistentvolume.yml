@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nginx-log-dev
+  namespace: dev
+  labels:
+    app: web
+spec:
+  capacity:
+   storage: 4Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 185.213.164.50
+    path: "/storage/nginx/log"
