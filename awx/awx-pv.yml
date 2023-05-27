@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: awx-pv
+  namespace: awx
+  labels:
+    app: postgres
+spec:
+  capacity:
+   storage: 3Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 185.213.164.50
+    path: "/storage/awx" 
